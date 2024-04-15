@@ -10,22 +10,25 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh '/path/to/npm install' // Replace '/path/to/npm' with the actual path to your npm binary
+                sh 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh '/path/to/npm test' // Replace '/path/to/npm' with the actual path to your npm binary
+                sh 'npm test'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'ssh user@hostname "cd /path/to/deploy && /path/to/npm install && /path/to/npm start"' // Replace '/path/to/npm' with the actual path to your npm binary
+                // Add deployment steps here if applicable
+                // For example, deploy to a test server using SSH
+                sh 'ssh user@hostname "cd /path/to/deploy && npm install && npm start"'
             }
         }
     }
+
     post {
         always {
             // Archive artifacts, send notifications, etc.
