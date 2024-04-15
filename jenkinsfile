@@ -4,31 +4,31 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from Git repository
                 git branch: 'master', url: 'https://github.com/swapnil-kal/node.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                // Install Node.js dependencies using npm
-                sh 'npm install'
+                sh '/path/to/npm install' // Replace '/path/to/npm' with the actual path to your npm binary
             }
         }
 
         stage('Run Tests') {
             steps {
-                // Run unit tests using npm
-                sh 'npm test'
+                sh '/path/to/npm test' // Replace '/path/to/npm' with the actual path to your npm binary
             }
         }
 
         stage('Deploy') {
             steps {
-                // Add deployment steps here if applicable
-                // For example, deploy to a test server using SSH
-                sh 'ssh user@hostname "cd /path/to/deploy && npm install && npm start"'
+                sh 'ssh user@hostname "cd /path/to/deploy && /path/to/npm install && /path/to/npm start"' // Replace '/path/to/npm' with the actual path to your npm binary
             }
+        }
+    }
+    post {
+        always {
+            // Archive artifacts, send notifications, etc.
         }
     }
 }
